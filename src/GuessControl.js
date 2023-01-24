@@ -13,9 +13,22 @@ const GuessControl = ({ onGuess }) => {
     setCurrentGuess("");
   };
 
+  const checkKeyPress = (e) => {
+    const { key, keyCode } = e;
+    console.log(key, keyCode);
+    if (keyCode === 13) {
+      onSubmitGuess();
+    }
+  };
+
   return (
     <div>
-      <input type="number" value={currentGuess} onChange={handleInputChange} />
+      <input
+        type="number"
+        value={currentGuess}
+        onChange={handleInputChange}
+        onKeyDown={checkKeyPress}
+      />
       <Button onClick={onSubmitGuess}>Submit Guess</Button>
     </div>
   );
