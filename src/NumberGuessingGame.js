@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import GuessControl from "./GuessControl";
 import GuessMessage from "./GuessMessage";
 import GameOver from "./GameOver";
@@ -10,7 +10,8 @@ function getRandomNumber() {
 const MAX_ATTEMPTS = 5;
 
 export function NumberGuessingGame() {
-  const [numberToGuess, setNumberToGuess] = useState(getRandomNumber());
+  const initialNumber = getRandomNumber();
+  const [numberToGuess, setNumberToGuess] = useState(initialNumber);
   const [numberOfGuesses, setNumberOfGuesses] = useState(0);
   const [latestGuess, setLatestGuess] = useState(null);
 
@@ -27,6 +28,8 @@ export function NumberGuessingGame() {
 
   const isCorrectGuess = latestGuess === numberToGuess;
   const isGameOver = isCorrectGuess || numberOfGuesses === MAX_ATTEMPTS;
+
+  console.log(numberToGuess);
 
   return (
     <div>
