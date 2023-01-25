@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button";
 
 const GuessControl = ({ onGuess }) => {
@@ -12,7 +12,7 @@ const GuessControl = ({ onGuess }) => {
     onGuess(Number(currentGuess));
     setCurrentGuess("");
   };
-
+  console.log(currentGuess);
   return (
     <div>
       <input type="number" value={currentGuess} onChange={handleInputChange} />
